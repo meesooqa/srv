@@ -1,9 +1,11 @@
 package srv
 
 import (
+	"context"
 	"log/slog"
 	"net"
 
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 )
 
@@ -13,6 +15,7 @@ type GRPCConfig interface {
 
 type ProtoServiceServer interface {
 	Register(grpcSrv *grpc.Server)
+	RegisterFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) error
 }
 
 type GRPCServer struct {

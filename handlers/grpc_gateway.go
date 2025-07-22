@@ -13,17 +13,13 @@ import (
 	"github.com/meesooqa/srv"
 )
 
-type ProtoServiceServer interface {
-	RegisterFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) error
-}
-
 type GrpcGateway struct {
 	logger *slog.Logger
 	cfg    srv.GRPCConfig
-	ss     []ProtoServiceServer
+	ss     []srv.ProtoServiceServer
 }
 
-func NewGrpcGateway(logger *slog.Logger, cfg srv.GRPCConfig, ss []ProtoServiceServer) *GrpcGateway {
+func NewGrpcGateway(logger *slog.Logger, cfg srv.GRPCConfig, ss []srv.ProtoServiceServer) *GrpcGateway {
 	return &GrpcGateway{
 		logger: logger,
 		cfg:    cfg,
