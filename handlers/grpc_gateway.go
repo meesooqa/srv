@@ -44,5 +44,5 @@ func (h *GrpcGateway) Handle(mux *http.ServeMux) {
 			}
 		}
 	}
-	mux.Handle("/api/v1/", apiMux)
+	mux.Handle(h.cfg.ApiEndpoint(), apiMux)
 }

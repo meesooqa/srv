@@ -11,6 +11,7 @@ import (
 
 type GRPCConfig interface {
 	Endpoint() string
+	ApiEndpoint() string
 }
 
 type ProtoServiceServer interface {
