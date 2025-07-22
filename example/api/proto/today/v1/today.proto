@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package today.v1;
+
+option go_package = "github.com/meesooqa/srv/example/api;today";
+
+import "google/api/annotations.proto";
+
+message TodayRequest {
+  string format = 1;
+}
+
+message TodayResponse {
+  string today = 1;
+  string format = 2;
+}
+
+service TodayService {
+  rpc Today(TodayRequest) returns (TodayResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/today"
+    };
+  }
+}
